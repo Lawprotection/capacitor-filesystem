@@ -23,6 +23,8 @@ extension CAPPluginCall {
             return nil
         }
         return switch getEncoding(Constants.MethodParameter.encoding) {
+    func getEncodingMapper(usingValue data: String) -> IONFILEEncodingValueMapper? {
+        switch getEncoding(Constants.MethodParameter.encoding) {
         case .byteBuffer:
             if let base64Data = Data.capacitor.data(base64EncodedOrDataUrl: data) {
                 .byteBuffer(value: base64Data)
@@ -41,6 +43,7 @@ extension CAPPluginCall {
 
     func handleSuccess(_ data: PluginCallResultData?, _ keepCallAlive: Bool = false) {
         keepAlive = keepCallAlive
+    func handleSuccess(_ data: PluginCallResultData?) {
         if let data {
             resolve(data)
         } else {

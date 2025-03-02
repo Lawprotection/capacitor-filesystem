@@ -1,4 +1,5 @@
 require_relative '../../../../node_modules/.pnpm/@capacitor+ios@7.0.0_@capacitor+core@7.0.0/node_modules/@capacitor/ios/scripts/pods_helpers'
+require_relative '../../../../node_modules/.pnpm/@capacitor+ios@7.0.0-rc.0_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/ios/scripts/pods_helpers'
 
 platform :ios, '14.0'
 use_frameworks!
@@ -17,6 +18,15 @@ def capacitor_pods
 end
 
 target 'App' do
+  pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@7.0.0-rc.0_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@7.0.0-rc.0_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/ios'
+  pod 'CapacitorCamera', :path => '../../../../node_modules/.pnpm/@capacitor+camera@7.0.0-rc.0_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/camera'
+  pod 'CapacitorSplashScreen', :path => '../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.0-rc.0_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/splash-screen'
+  pod 'CapacitorFilesystem', :path => '../../../../node_modules/.pnpm/@capacitor+filesystem@file+packages+capacitor-plugin_@capacitor+core@7.0.0-rc.0/node_modules/@capacitor/filesystem'
+end
+
+target 'App' do
+  #pod 'IONFilesystemLib', :path => '../../../ios-lib'
   capacitor_pods
   # Add your Pods here
 end

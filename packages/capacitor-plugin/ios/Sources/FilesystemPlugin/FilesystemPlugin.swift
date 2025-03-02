@@ -33,6 +33,10 @@ public class FilesystemPlugin: CAPPlugin, CAPBridgedPlugin {
     private var fileService: FileService?
 
     override public func load() {
+    
+    private var fileService: FileService?
+
+    public override func load() {
         self.fileService = IONFILEManager()
     }
 
@@ -46,6 +50,11 @@ public class FilesystemPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     @objc override public func requestPermissions(_ call: CAPPluginCall) {
+    override public func checkPermissions(_ call: CAPPluginCall) {
+        call.handlePermissionSuccess()
+    }
+
+    override public func requestPermissions(_ call: CAPPluginCall) {
         call.handlePermissionSuccess()
     }
 }
@@ -69,6 +78,7 @@ private extension FilesystemPlugin {
         }
         performSinglePathOperation(call) {
             .readFileInChunks(url: $0, encoding: encoding, chunkSize: chunkSize)
+            .read(url: $0, encoding: encoding)
         }
     }
 
@@ -78,6 +88,11 @@ private extension FilesystemPlugin {
     @objc func writeFile(_ call: CAPPluginCall) {
         guard let encodingMapper = call.getEncodingMapper() else {
             return call.handleError(.invalidInput(method: call.getIONFileMethod()))
+        guard let data = call.getString(Constants.MethodParameter.data) else {
+            return call.handleError(.invalidDataParameter)
+        }
+        guard let encodingMapper = call.getEncodingMapper(usingValue: data) else {
+            return call.handleError(.invalidDataEncodingCombination(method: .writeFile))
         }
         let recursive = call.getBool(Constants.MethodParameter.recursive, false)
 
@@ -92,6 +107,11 @@ private extension FilesystemPlugin {
     @objc func appendFile(_ call: CAPPluginCall) {
         guard let encodingMapper = call.getEncodingMapper() else {
             return call.handleError(.invalidInput(method: call.getIONFileMethod()))
+        guard let data = call.getString(Constants.MethodParameter.data) else {
+            return call.handleError(.invalidDataParameter)
+        }
+        guard let encodingMapper = call.getEncodingMapper(usingValue: data) else {
+            return call.handleError(.invalidDataEncodingCombination(method: .appendFile))
         }
         let recursive = call.getBool(Constants.MethodParameter.recursive, false)
 
@@ -117,6 +137,7 @@ private extension FilesystemPlugin {
 
         performSinglePathOperation(call) {
             .mkdir(url: $0, recursive: recursive)
+            .mkdir(url: $0,recursive: recursive)
         }
     }
 

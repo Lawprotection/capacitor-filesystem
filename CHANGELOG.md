@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [Unreleased]
 # 7.1.0.dev.3 (file viewer?)
 
 ### Features
@@ -395,4 +396,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
+- Filesystem plugin ([#19](https://github.com/ionic-team/capacitor-plugins/issues/19)) ([3b86a4a](https://github.com/ionic-team/capacitor-plugins/commit/3b86a4a972e00eaed1d078bfcc69af6136222dc4))
 - Filesystem plugin ([#19](https://github.com/ionic-team/capacitor-plugins/issues/19)) ([3b86a4a](https://github.com/ionic-team/capacitor-plugins/commit/3b86a4a972e00eaed1d078bfcc69af6136222dc4))

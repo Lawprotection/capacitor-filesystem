@@ -5,6 +5,7 @@ enum FilesystemOperation {
     // Read Operations
     case readFile(url: URL, encoding: IONFILEEncoding)
     case readFileInChunks(url: URL, encoding: IONFILEEncoding, chunkSize: Int)
+    case read(url: URL, encoding: IONFILEEncoding)
     case readdir(url: URL)
     case stat(url: URL)
     case getUri(url: URL)

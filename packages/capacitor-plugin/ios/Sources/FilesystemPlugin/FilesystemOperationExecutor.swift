@@ -11,6 +11,9 @@ class FilesystemOperationExecutor {
         self.service = service
     }
 
+struct FilesystemOperationExecutor {
+    let service: FileService
+
     func execute(_ operation: FilesystemOperation, _ call: CAPPluginCall) {
         do {
             var resultData: PluginCallResultData?
@@ -22,6 +25,9 @@ class FilesystemOperationExecutor {
             case .readFileInChunks(let url, let encoding, let chunkSize):
                 try processFileInChunks(at: url, withEncoding: encoding, chunkSize: chunkSize, for: operation, call)
                 return
+            case .read(let url, let encoding):
+                let data = try service.readEntireFile(atURL: url, withEncoding: encoding).description
+                resultData = [Constants.ResultDataKey.data: data]
             case .write(let url, let encodingMapper, let recursive):
                 try service.saveFile(atURL: url, withEncodingAndData: encodingMapper, includeIntermediateDirectories: recursive)
                 resultData = [Constants.ResultDataKey.uri: url.absoluteString]
@@ -106,6 +112,19 @@ private extension FilesystemOperationExecutor {
         case IONFILEFileManagerError.missingParentFolder: .parentDirectoryMissing
         case IONFILEFileManagerError.fileNotFound: .fileNotFound(method: method, path)
         default: .operationFailed(method: method, error)
+    func mapError(_ error: Error, for operation: FilesystemOperation) -> FilesystemError {
+        return switch operation {
+        case .read: .operationFailed(method: .read, error)
+        case .write: .operationFailed(method: .writeFile, error)
+        case .append: .operationFailed(method: .appendFile, error)
+        case .delete: .operationFailed(method: .deleteFile, error)
+        case .mkdir: .operationFailed(method: .mkdir, error)
+        case .rmdir: .operationFailed(method: .rmdir, error)
+        case .readdir: .operationFailed(method: .readdir, error)
+        case .stat: .operationFailed(method: .stat, error)
+        case .getUri: .invalidPath("")
+        case .rename: .operationFailed(method: .rename, error)
+        case .copy: .operationFailed(method: .copy, error)
         }
     }
 

@@ -13,6 +13,7 @@ export enum Directory {
    * Use this directory to store user-generated content.
    * On Android it's the Public Documents folder, so it's accessible from other apps.
    * It's not accesible on Android 10 unless the app enables legacy External Storage
+   * It's not accessible on Android 10 unless the app enables legacy External Storage
    * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
    * in the `AndroidManifest.xml`.
    * On Android 11 or newer the app can only access the files/folders the app created.
@@ -84,6 +85,19 @@ export enum Directory {
    * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
    * in the `AndroidManifest.xml`.
    * It's not accesible on Android 11 or newer.
+   * It's not accessible on Android 10 unless the app enables legacy External Storage
+   * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
+   * in the `AndroidManifest.xml`.
+   * It's not accessible on Android 11 or newer.
+   *
+   * @since 1.0.0
+   */
+
+  ExternalStorage = 'EXTERNAL_STORAGE',
+  /**
+   * The external cache directory.
+   * On iOS it will use the Documents directory.
+   * On Android it's the primary shared/external cache.
    *
    * @since 7.1.0
    */
@@ -93,6 +107,8 @@ export enum Directory {
    * iOS only
    * It maps to Library/NoCloud directory
    * Files will be deleted when the application is uninstalled.
+   * The Library directory without cloud backup. Used in iOS.
+   * On Android it's the directory holding application files.
    *
    * @since 7.1.0
    */
@@ -102,6 +118,8 @@ export enum Directory {
    * iOS only
    * The tmp/ directory.
    * Files will be deleted when the application is uninstalled.
+   * A temporary directory for iOS.
+   * On Android it's the directory holding the application cache.
    *
    * @since 7.1.0
    */
