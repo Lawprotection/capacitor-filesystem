@@ -127,6 +127,11 @@ window.customElements.define(
         console.log(permissionStatus);
       });
 
+        this.checkPermissions()
+      });
+      self.shadowRoot.querySelector('#request-permission').addEventListener('click', async function (e) {
+        this.requestPermissions()
+      });
       self.shadowRoot.querySelector('#mkdir').addEventListener('click', async function (e) {
         try {
           let ret = await Filesystem.mkdir({
@@ -150,6 +155,7 @@ window.customElements.define(
           alert('Unable to remove directory', e);
         }
       });
+
       self.shadowRoot.querySelector('#readdir').addEventListener('click', async function (e) {
         try {
           let ret = await Filesystem.readdir({

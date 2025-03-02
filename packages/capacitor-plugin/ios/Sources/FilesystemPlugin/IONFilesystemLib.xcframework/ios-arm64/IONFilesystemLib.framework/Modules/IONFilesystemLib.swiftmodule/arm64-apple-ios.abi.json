@@ -541,9 +541,14 @@
             "usr": "s:16IONFilesystemLib21IONFILEChunkPublisherC7receive10subscriberyx_t7Combine10SubscriberRzs5Error_p7FailureRtzAA26IONFILEEncodingValueMapperO5InputRtzlF",
             "mangledName": "$s16IONFilesystemLib21IONFILEChunkPublisherC7receive10subscriberyx_t7Combine10SubscriberRzs5Error_p7FailureRtzAA26IONFILEEncodingValueMapperO5InputRtzlF",
             "moduleName": "IONFilesystemLib",
-            "genericSig": "<τ_0_0 where τ_0_0 : Combine.Subscriber, τ_0_0.Failure == any Swift.Error, τ_0_0.Input == IONFilesystemLib.IONFILEEncodingValueMapper>",
+<            "genericSig": "<τ_0_0 where τ_0_0 : Combine.Subscriber, τ_0_0.Failure == any Swift.Error, τ_0_0.Input == IONFilesystemLib.IONFILEEncodingValueMapper>",
             "sugared_genericSig": "<S where S : Combine.Subscriber, S.Failure == any Swift.Error, S.Input == IONFilesystemLib.IONFILEEncodingValueMapper>",
-            "declAttributes": [
+>>>>>>>+HEAD
+==
+                 "genericSig": "<τ_0_0 where τ_0_0 : Combine.Subscriber, τ_0_0.Failure == Swift.Error, τ_0_0.Input == IONFilesystemLib.IONFILEEncodingValueMapper>",
+            "sugared_genericSig": "<S where S : Combine.Subscriber, S.Failure == Swift.Error, S.Input == IONFilesystemLib.IONFILEEncodingValueMapper>",
+>>>>>>>+942376e
+   "declAttributes": [
               "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
@@ -560,7 +565,6 @@
         "conformances": [
           {
             "kind": "Conformance",
-            "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",
             "mangledName": "$ss8CopyableP"
@@ -574,6 +578,8 @@
           },
           {
             "kind": "Conformance",
+>>>>>>>+HEAD
+>>>>>> 942376e... feat: adds bridge definition + iOS implementation (#1)
             "name": "Publisher",
             "printedName": "Publisher",
             "children": [
@@ -598,8 +604,11 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Error",
-                    "printedName": "any Swift.Error",
-                    "usr": "s:s5ErrorP"
+<<<<<<< H                    "printedName": "any Swift.Error",
+>>>>>>>+HEAD
+                            "printedName": "Swift.Error",
+>>>>>>>+942376e
+           "usr": "s:s5ErrorP"
                   }
                 ]
               }
@@ -733,7 +742,8 @@
         "moduleName": "IONFilesystemLib",
         "declAttributes": [
           "AccessControl"
-        ],
+<<<<<<< HEAD
+          ],
         "conformances": [
           {
             "kind": "Conformance",
@@ -749,6 +759,8 @@
             "usr": "s:s8CopyableP",
             "mangledName": "$ss8CopyableP"
           }
+>>>>>>>+HEAD
+ 942376e... feat: adds bridge definition + iOS implementation (#1)
         ]
       },
       {
@@ -1079,7 +1091,9 @@
         "moduleName": "IONFilesystemLib",
         "declAttributes": [
           "AccessControl"
+<<<<<<< HEAD
         ],
+        "        ],
         "conformances": [
           {
             "kind": "Conformance",
@@ -1095,6 +1109,8 @@
             "usr": "s:s8CopyableP",
             "mangledName": "$ss8CopyableP"
           }
+>>>>>>>+HEAD
+adds bridge definition + iOS implementation (#1)
         ]
       },
       {
@@ -1246,6 +1262,7 @@
         "conformances": [
           {
             "kind": "Conformance",
+<<<<<<< HEAD
             "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",

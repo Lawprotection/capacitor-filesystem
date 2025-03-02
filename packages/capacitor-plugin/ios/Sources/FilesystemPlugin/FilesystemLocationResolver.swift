@@ -8,6 +8,7 @@ struct FilesystemLocationResolver {
     func resolveSinglePath(from call: CAPPluginCall) -> Result<URL, FilesystemError> {
         guard let path = call.getString(Constants.MethodParameter.path) else {
             return .failure(.invalidInput(method: call.getIONFileMethod()))
+            return .failure(.invalidPathParameter)
         }
 
         let directory = call.getSearchPath(Constants.MethodParameter.directory)
@@ -17,6 +18,7 @@ struct FilesystemLocationResolver {
     func resolveDualPaths(from call: CAPPluginCall) -> Result<(source: URL, destination: URL), FilesystemError> {
         guard let fromPath = call.getString(Constants.MethodParameter.from), let toPath = call.getString(Constants.MethodParameter.to) else {
             return .failure(.invalidInput(method: call.getIONFileMethod()))
+            return .failure(.bothPathsRequired)
         }
 
         let fromDirectory = call.getSearchPath(Constants.MethodParameter.directory)
