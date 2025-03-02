@@ -1,3 +1,6 @@
 [submodule "capacitor-filesystem"]
 	path = capacitor-filesystem
 	url = https://github.com/ionic-team/capacitor-filesystem.git
+[submodule ".github/a"]
+	path = .github/a
+	url = https://github.com/ionic-team/capacitor-filesystem.git
